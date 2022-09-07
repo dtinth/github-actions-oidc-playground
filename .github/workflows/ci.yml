@@ -1,7 +1,8 @@
 name: CI
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
+    tags: ["*"]
   workflow_dispatch:
 jobs:
   build:
