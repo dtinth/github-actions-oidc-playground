@@ -1,7 +1,3 @@
-# github-actions-oidc-example
-Just playing around with GitHub Actions OIDC support
+# github-actions-oidc-playground
 
-| Claim | Scenario | Value |
-| --- | --- | --- |
-| `sub` | When pushing a tag | `repo:dtinth/github-actions-oidc-example:ref:refs/tags/v0.0.1-1` |
-|  | When pushing to a branch | `repo:dtinth/github-actions-oidc-example:ref:refs/heads/main` |
+A playground to learn about [GitHub Actions’ OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect) support. Trigger various actions on GitHub, then look at the build summary to inspect the ID token for that workflow. [See example.](https://github.com/dtinth/github-actions-oidc-playground/actions/runs/3183773033) 
