@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: ["main"]
+    branches: ["*"]
     tags: ["*"]
   issues:
   issue_comment:
@@ -11,9 +11,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | curl -d@- -X POST https://enkduyz6g334a.x.pipedream.net/$GITHUB_EVENT_NAME
-      - run: |
-          echo "Inspect here: https://requestbin.com/r/enkduyz6g334a"
+      - name: Inspect ID token
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const idToken = await core.getIDToken()
+            const [headerJson, payloadJson] = idToken.split('.')
+            const header = JSON.stringify(JSON.parse(Buffer.from(headerJson, 'base64').toString()), null, 2)
+            const payload = JSON.stringify(JSON.parse(Buffer.from(payloadJson, 'base64').toString()), null, 2)
+            await core.summary
+              .addHeading('Header')
+              .addCodeBlock(header, "json")
+              .addHeading('Payload')
+              .addCodeBlock(payload, "json")
+            console.log(header)
+            console.log(payload)
     permissions:
       id-token: write
