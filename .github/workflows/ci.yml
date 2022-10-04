@@ -24,6 +24,7 @@ jobs:
               .addCodeBlock(header, "json")
               .addHeading('Payload')
               .addCodeBlock(payload, "json")
+              .write()
             console.log(header)
             console.log(payload)
     permissions:
