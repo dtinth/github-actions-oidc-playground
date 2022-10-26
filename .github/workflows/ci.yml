@@ -20,6 +20,8 @@ jobs:
             const header = JSON.stringify(JSON.parse(Buffer.from(headerJson, 'base64').toString()), null, 2)
             const payload = JSON.stringify(JSON.parse(Buffer.from(payloadJson, 'base64').toString()), null, 2)
             await core.summary
+              .addHeading('Token')
+              .addCodeBlock(idToken, "plaintext")
               .addHeading('Header')
               .addCodeBlock(header, "json")
               .addHeading('Payload')
