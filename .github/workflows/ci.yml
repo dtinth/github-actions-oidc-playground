@@ -35,6 +35,8 @@ jobs:
         with:
           workload_identity_provider: "projects/35904191124/locations/global/workloadIdentityPools/github-actions/providers/github-actions"
           service_account: "github-actions@dtinth-url.iam.gserviceaccount.com"
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
       - run: echo "Hello, world!" | gsutil cp - gs://dtinth-url.appspot.com/hello.txt
     permissions:
       id-token: write
