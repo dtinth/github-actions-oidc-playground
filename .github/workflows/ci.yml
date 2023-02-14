@@ -29,6 +29,7 @@ jobs:
               .write()
             console.log(header)
             console.log(payload)
+      - uses: "actions/checkout@v3"
       - name: Authenticate to Google Cloud
         uses: "google-github-actions/auth@v1"
         with:
