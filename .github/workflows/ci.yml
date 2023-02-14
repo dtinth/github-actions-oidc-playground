@@ -29,5 +29,11 @@ jobs:
               .write()
             console.log(header)
             console.log(payload)
+      - name: Authenticate to Google Cloud
+        uses: "google-github-actions/auth@v1"
+        with:
+          workload_identity_provider: "projects/35904191124/locations/global/workloadIdentityPools/github-actions/providers/github-actions"
+          service_account: "github-actions@dtinth-url.iam.gserviceaccount.com"
+      - echo "Hello, world!" | gsutil cp - gs://dtinth-url.appspot.com/hello.txt
     permissions:
       id-token: write
