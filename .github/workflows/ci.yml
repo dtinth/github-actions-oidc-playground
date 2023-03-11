@@ -39,5 +39,6 @@ jobs:
         uses: "google-github-actions/setup-gcloud@v1"
       - run: |
           echo "Hello, world!" | gsutil -h 'Content-Disposition: inline' cp - gs://dtinth-url.appspot.com/hello.html
+          echo "Hello, world 2!" | gsutil cp - gs://dtinth-url.appspot.com/hello2.html
     permissions:
       id-token: write
